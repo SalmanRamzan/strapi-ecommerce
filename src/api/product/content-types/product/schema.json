@@ -1,0 +1,87 @@
+{
+  "kind": "collectionType",
+  "collectionName": "products",
+  "info": {
+    "singularName": "product",
+    "pluralName": "products",
+    "displayName": "Product",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "rating": {
+      "type": "integer",
+      "default": 5
+    },
+    "descr": {
+      "type": "text"
+    },
+    "price": {
+      "type": "integer",
+      "default": 1500
+    },
+    "dprice": {
+      "type": "integer",
+      "default": 1000
+    },
+    "features": {
+      "type": "json"
+    },
+    "variants": {
+      "type": "json"
+    },
+    "specs": {
+      "type": "json"
+    },
+    "photos": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "stock": {
+      "type": "integer"
+    },
+    "isFeatured": {
+      "type": "boolean",
+      "default": false
+    },
+    "isBestseller": {
+      "type": "boolean",
+      "default": false
+    },
+    "isNewarrival": {
+      "type": "boolean",
+      "default": false
+    },
+    "reviews": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::review.review",
+      "mappedBy": "product"
+    },
+    "orders": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::order.order",
+      "mappedBy": "product"
+    },
+    "collection": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::collection.collection",
+      "inversedBy": "products"
+    },
+    "tags": {
+      "type": "json"
+    }
+  }
+}
